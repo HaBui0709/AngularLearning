@@ -1,0 +1,23 @@
+<!--
+Add JavaScript to the button to make <div id="text"> disappear when we click it.
+!-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+<label>Like this</label>
+<input id="text" type="button" value="Click to hide">
+
+<script>
+  text.addEventListener("click", function() {
+    this.hidden = true;
+  });
+</script>
+
+</body>
+</html>

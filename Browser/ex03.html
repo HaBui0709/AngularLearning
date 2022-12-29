@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<form name="search">
+  <label>Search the site:
+    <input type="text" name="search">
+  </label>
+  <input type="submit" value="Search!">
+</form>
+
+<hr>
+
+<form name="search-person">
+  Search the visitors:
+  <table id="age-table">
+    <tbody>
+    <tr>
+      <td>Age:</td>
+      <td id="age-list">
+        <label>
+          <input type="radio" name="age" value="young">less than 18</label>
+        <label>
+          <input type="radio" name="age" value="mature">18-50</label>
+        <label>
+          <input type="radio" name="age" value="senior">more than 50</label>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Additionally:</td>
+      <td>
+        <input type="text" name="info[0]">
+        <input type="text" name="info[1]">
+        <input type="text" name="info[2]">
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+  <input type="submit" value="Search!">
+</form>
+
+<script>
+  /*How to find?…
+
+    The table with id="age-table".
+    All label elements inside that table (there should be 3 of them).
+    The first td in that table (with the word “Age”).
+    The form with name="search".
+    The first input in that form.
+    The last input in that form.*/
+
+  let table = document.getElementById("age-table");
+  let tableLabels = table.querySelectorAll("label");
+  for (const tableLabel of tableLabels) {
+    console.log(tableLabel.textContent)
+  }
+  let firstTd = table.querySelector("tr > td:first-child");
+  console.log(firstTd.textContent)
+
+  let form = document.querySelector('form[name="search"]');
+  let formInputs = form.querySelectorAll("input");
+
+  console.log("First input: " + formInputs[0].type)
+  console.log("Last input: " + formInputs[formInputs.length - 1].type)
+</script>
+</body>
+</html>

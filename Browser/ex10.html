@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+Write a function createTree that creates a nested ul/li list from the nested object.
+For instance:
+let data = {
+"Fish": {
+"trout": {},
+"salmon": {}
+},
+"Tree": {
+"Huge": {
+"sequoia": {},
+"oak": {}
+},
+"Flowering": {
+"apple tree": {},
+"magnolia": {}
+}
+}
+};
+*/
+  let data = {
+    "Fish": {
+      "trout": {},
+      "salmon": {}
+    },
+    "Tree": {
+      "Huge": {
+        "sequoia": {},
+        "oak": {}
+      },
+      "Flowering": {
+        "apple tree": {},
+        "magnolia": {}
+      }
+    }
+  };
+
+  function createDomTree(data) {
+    if (Object.keys(data).length == 0){
+      return;
+    }
+    let ul = document.createElement("ul");
+    for (const key in data) {
+      let li = document.createElement("li");
+      li.textContent = key;
+      ul.append(li);
+      let children = createDomTree(data[key]);
+      if (children){
+        li.append(children);
+      }
+    }
+      return ul;
+  }
+
+  function createTree(container, data) {
+    let tree = createDomTree2(data);
+    container.append(tree);
+  }
+
+  function createDomTree2(data) {
+    if (!Object.keys(data).length){
+      return;
+    }
+    let result = "<ul>";
+    for (const key in data) {
+      let li = "<li>" + key;
+      let children = createDomTree2(data[key]);
+      if (children){
+        li += children;
+      }
+      result += li + "</li>";
+    }
+    return result + "</ul>";
+  }
+
+  function createTree2(container, data) {
+    let tree = createDomTree2(data);
+    container.innerHTML = tree;
+  }
+
+  createTree(document.body, data);
+  createTree2(document.body, data);
+
+</script>
+</body>
+</html>

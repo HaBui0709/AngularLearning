@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    #sweeties{
+      cursor: pointer;
+    }
+    ul{
+      display: none;
+    }
+    .title::before{
+      content: "▶ ";
+      color: green;
+    }
+    .title.open::before{
+      content: "▼ ";
+      color: green;
+    }
+    .title.open + ul{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id = "sweeties" class="title">Sweeties (click me)!</div>
+<ul>
+  <li>Cake</li>
+  <li>Donut</li>
+  <li>Honey</li>
+</ul>
+
+<script>
+  sweeties.onclick = function () {
+    sweeties.classList.toggle("open");
+  }
+</script>
+</body>
+</html>

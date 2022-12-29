@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    #field {
+      width: 200px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+    }
+
+    #ball {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+
+<div id="field">
+  <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . .
+</div>
+<script>
+  new Promise(resolve => resolve({height: ball.height, width: ball.width})
+  ).then(img => {
+    let leftOffset = field.clientWidth / 2 - img.width / 2;
+    let topOffset = field.clientHeight / 2 - img.height / 2;
+    ball.style.left = leftOffset + "px";
+    ball.style.top = topOffset + "px";
+  })
+</script>
+
+</body>
+
+</html>

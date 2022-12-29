@@ -1,0 +1,57 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th{
+    background-color: #E6E6E6;
+  }
+</style>
+<table>
+  <tr>
+    <th>MO</th>
+    <th>TU</th>
+    <th>WE</th>
+    <th>TH</th>
+    <th>FR</th>
+    <th>SA</th>
+    <th>SU</th>
+  </tr>
+
+</table>
+<script>
+  // let DAY_OF_WEEK = Array.of('MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU');
+  function createCalendar(elem, year, month){
+    month -= 1;
+    let date = new Date(year, month, 1);
+    let firstDayOfMonthInWeek = date.getDay();
+    let tr = document.createElement("tr");
+    let i = 1;
+    while (i < firstDayOfMonthInWeek || (firstDayOfMonthInWeek == 0 && i < 7)){
+      let td = document.createElement("td");
+      td.textContent = "";
+      tr.append(td);
+      i++;
+    }
+    let dayCount = 1;
+    let table = document.querySelector("table");
+    let lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+
+    while (i <= 7 && dayCount <= lastDateOfMonth){
+      let td = document.createElement("td");
+      td.textContent = "" + dayCount++;
+      tr.append(td);
+      i++;
+      if (i > 7){
+        i = 1;
+        table.append(tr)
+        tr = document.createElement("tr");
+      }
+    }
+    table.append(tr)
+    elem.append(table)
+  }
+
+  createCalendar(document.body, 2012, 9);
+
+</script>

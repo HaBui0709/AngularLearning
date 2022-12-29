@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .control > input{
+      margin: 2px;
+    }
+    #hour{
+      color: red;
+    }
+    #minute{
+      color: green;
+    }
+    #second{
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="time">
+      <span id = "hour">hh</span>:
+      <span id = "minute">mm</span>:
+      <span id = "second">ss</span>
+    </div>
+    <div class="control">
+      <input type="button" value="Start" onclick=onStart()>
+      <input type="button" value="Stop" onclick=onStop()>
+    </div>
+  </div>
+<script>
+  let intervalId;
+  function onStart() {
+    updateTimer();
+    if (!intervalId){
+      intervalId = setInterval(updateTimer, 1000);
+    }
+
+  }
+
+  function onStop() {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  function updateTimer() {
+    let now = new Date();
+    hour.innerHTML = formatDateTime(now.getHours());
+    minute.innerHTML = formatDateTime(now.getMinutes());
+    second.innerHTML = formatDateTime(now.getSeconds());
+  }
+  function formatDateTime(time) {
+    return time.toString().padStart(2, 0);
+  }
+</script>
+</body>
+</html>

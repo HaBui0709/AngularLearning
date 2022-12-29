@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    span{
+      color: green;
+    }
+    #sweeties{
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id = "sweeties"><span hidden=true>▶</span> <span>▼</span> Sweeties (click me)!</div>
+<ul>
+  <li>Cake</li>
+  <li>Donut</li>
+  <li>Honey</li>
+</ul>
+<script>
+  sweeties.onclick = function () {
+    let ul = document.querySelector("ul");
+    ul.hidden = !ul.hidden;
+    let spans = document.querySelectorAll("span");
+    spans[0].hidden = spans[1].hidden;
+    spans[1].hidden = !spans[0].hidden;
+  }
+</script>
+</body>
+</html>

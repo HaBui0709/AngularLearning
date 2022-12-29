@@ -1,0 +1,16 @@
+<ol id="elem">
+  <li>Hello</li>
+  <li>World</li>
+</ol>
+
+<script>
+  /*
+    Create a function clear(elem) that removes everything from the element.
+   */
+  function clear(elem) {
+    /* your code */
+    Array.from(elem.children).forEach(child => child.remove());
+  }
+
+  clear(elem); // clears the list
+</script>

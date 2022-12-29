@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  runOnKeys(
+    () => alert("Hello!"),
+    "KeyQ",
+    "KeyW"
+  );
+
+  function runOnKeys(func, ...codes) {
+    let pressedCodes = new Set();
+    document.addEventListener("keyup", function ({code}) {
+      pressedCodes.delete(code);
+    })
+    document.addEventListener("keydown", function ({code}) {
+      if ([...codes].includes(code) && !pressedCodes.has(code)) {
+        pressedCodes.add(code);
+      }
+      if (pressedCodes.size == codes.length) {
+        func();
+        pressedCodes.clear();
+      }
+    })
+
+  }
+</script>
+</body>
+</html>
