@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <div class="header">
+    <div class="date"><span class="dayOfWeek">Thursday</span><span>, </span><span class="dayOfMonth">10th</span></div>
+    <div class="month">December</div>
+  </div>
+  <div class="content">
+    <div class="plus">+</div>
+    <form name="content-form">
+    </form>
+  </div>
+</div>
+
+<form name="popup" hidden>
+  <label>Add item:</label>
+  <input type="text" placeholder="Input here...." name="item-input" required><br>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+  <input type="button" value="Cancel" name="cancel">
+</form>
+
+<script>
+  const now = new Date();
+  const contentForm = document.forms['content-form'];
+  const plus = document.querySelector(".plus")
+  const popup = document.forms['popup'];
+  const itemInput = popup['item-input'];
+
+  initItems(contentForm);
+  fillInDateTime();
+
+  contentForm.onclick = function ({target}) {
+    const closestItem = target.closest(".item");
+    if (!closestItem) {
+      return;
+    }
+    closestItem.firstElementChild.checked = !closestItem.firstElementChild.checked;
+    closestItem.lastElementChild.classList.toggle("strike");
+  }
+
+  popup.onsubmit = function (event) {
+    event.preventDefault();
+    if (!itemInput.value.trim()) {
+      alert("Item input is blank!");
+      return;
+    }
+    contentForm.append(createItem(false, itemInput.value))
+    itemInput.value = ""
+    adjustDisplayOfMainScreenAndTogglePopup();
+  }
+
+  popup.cancel.onclick = function () {
+    adjustDisplayOfMainScreenAndTogglePopup();
+  }
+
+  plus.onclick = function () {
+    adjustDisplayOfMainScreenAndTogglePopup("none", "0.4", false);
+    itemInput.focus();
+  }
+
+</script>
+</body>
+</html>

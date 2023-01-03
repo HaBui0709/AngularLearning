@@ -1,0 +1,82 @@
+.strike {
+  text-decoration: line-through;
+}
+
+.plus {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: red;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  position: absolute;
+  right: 40px;
+  top: -20px;
+  cursor: pointer;
+  margin: auto;
+}
+
+body {
+  width: 35%;
+  margin: 50px auto;
+}
+
+.header, .content {
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.header {
+  background-color: #F3DFAD;
+}
+
+.content {
+  position: relative;
+  background-color: #AEAEA9;
+  min-height: 500px;
+}
+
+.content .item {
+  margin: 20px 0px;
+}
+
+span{
+  font-size: 25px;
+  color: #9C18B2;
+  font-family: Arial;
+}
+
+.dayOfWeek {
+  font-weight: bold;
+}
+
+.month {
+  font-weight: bold;
+  font-family: Arial;
+}
+
+form[name=popup] {
+  padding: 10px;
+  background-color: #2FF4D0;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+[name=popup] > input {
+  margin-top: 10px;
+}
+
+.header > div {
+  margin: 10px 0px;
+}
+
+label{
+  user-select: none;
+}
