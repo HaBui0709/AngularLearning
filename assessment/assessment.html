@@ -55,15 +55,15 @@
     }
     contentForm.append(createItem(false, itemInput.value))
     itemInput.value = ""
-    adjustDisplayOfMainScreenAndTogglePopup();
+    togglePopup();
   }
 
   popup.cancel.onclick = function () {
-    adjustDisplayOfMainScreenAndTogglePopup();
+    togglePopup();
   }
 
   plus.onclick = function () {
-    adjustDisplayOfMainScreenAndTogglePopup("none", "0.4", false);
+    togglePopup("none", "0.4", false);
     itemInput.focus();
   }
 

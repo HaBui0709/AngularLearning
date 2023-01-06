@@ -1,6 +1,10 @@
 function initItems(contentForm) {
-  const itemsMap = new Map([["Buy pizza", false], ["Contrary to popular", false], ["Something went wrong", true]]);
-  [...itemsMap.entries()].map(([labelText, isChecked]) => createItem(isChecked, labelText))
+  const initialItems = [
+                        {itemText: 'Buy pizza', isChecked: false},
+                        {itemText: 'Hello World', isChecked: false},
+                        {itemText: 'Something went wrong', isChecked: true}
+  ];
+  initialItems.map(item => createItem(item.isChecked, item.itemText))
     .forEach(item => contentForm.append(item));
 }
 
@@ -20,7 +24,7 @@ function createItem(isChecked, labelText) {
   return div;
 
 }
-function adjustDisplayOfMainScreenAndTogglePopup(pointerEvent = "auto", opacity = "1", hidden = true) {
+function togglePopup(pointerEvent = "auto", opacity = "1", hidden = true) {
   document.querySelector(".container").style.pointerEvents = pointerEvent;
   document.querySelector(".container").style.opacity = opacity;
   popup.hidden = hidden;
@@ -48,16 +52,11 @@ function getDayOfWeek() {
   return dayOfWeekNames[now.getDay()];
 }
 
+const ordinalNumberMap = new Map([
+    [1, 'st'],
+    [2, 'nd'],
+    [3, 'rd']
+])
 function nth(d) {
-  if (d > 3 && d < 21) return 'th';
-  switch (d % 10) {
-    case 1:
-      return d + "st";
-    case 2:
-      return d + "nd";
-    case 3:
-      return d + "rd";
-    default:
-      return d + "th";
-  }
+  return d + ((d > 3 && d < 21) ? 'th' : `${ordinalNumberMap.get(d % 10)} || 'th'`);
 }
